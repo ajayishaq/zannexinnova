@@ -318,6 +318,7 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.2s ease;
+            cursor: pointer;
         }
         
         /* Contact Section */
@@ -492,6 +493,100 @@
         #cookie-consent .decline:hover {
             background-color: #222222;
         }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .modal-content {
+            background-color: #0a0a0a;
+            border: 1px solid #222222;
+            border-radius: 16px;
+            max-width: 800px;
+            width: 90%;
+            padding: 32px;
+            position: relative;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-content h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 16px;
+        }
+
+        .modal-content .project-category {
+            display: inline-block;
+            background-color: #1a1a1a;
+            color: #888888;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        .modal-content p {
+            font-size: 1rem;
+            color: #888888;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .modal-content .tech-badges {
+            margin-bottom: 16px;
+        }
+
+        .modal-content .key-features {
+            margin-top: 24px;
+        }
+
+        .modal-content .key-features ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            color: #888888;
+        }
+
+        .modal-content .key-features li {
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: #888888;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .close-modal:hover {
+            color: #3b82f6;
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                padding: 24px;
+                max-height: 90vh;
+            }
+        }
     </style>
     <script type="application/ld+json">
     {
@@ -618,7 +713,7 @@
                         <span class="tech-badge">D3.js</span>
                         <span class="tech-badge">Node.js</span>
                     </div>
-                    <div class="project-hover-text">View Project Details →</div>
+                    <div class="project-hover-text" onclick="openModal('modal-business-analytics')">View Project Details →</div>
                 </div>
             </div>
 
@@ -635,7 +730,7 @@
                         <span class="tech-badge">PostgreSQL</span>
                         <span class="tech-badge">Stripe</span>
                     </div>
-                    <div class="project-hover-text">View Project Details →</div>
+                    <div class="project-hover-text" onclick="openModal('modal-ecommerce')">View Project Details →</div>
                 </div>
             </div>
 
@@ -652,7 +747,7 @@
                         <span class="tech-badge">APIs</span>
                         <span class="tech-badge">PostgreSQL</span>
                     </div>
-                    <div class="project-hover-text">View Project Details →</div>
+                    <div class="project-hover-text" onclick="openModal('modal-marketing-automation')">View Project Details →</div>
                 </div>
             </div>
 
@@ -669,7 +764,7 @@
                         <span class="tech-badge">Security</span>
                         <span class="tech-badge">APIs</span>
                     </div>
-                    <div class="project-hover-text">View Project Details →</div>
+                    <div class="project-hover-text" onclick="openModal('modal-mobile-banking')">View Project Details →</div>
                 </div>
             </div>
 
@@ -686,7 +781,7 @@
                         <span class="tech-badge">APIs</span>
                         <span class="tech-badge">PostgreSQL</span>
                     </div>
-                    <div class="project-hover-text">View Project Details →</div>
+                    <div class="project-hover-text" onclick="openModal('modal-supply-chain')">View Project Details →</div>
                 </div>
             </div>
 
@@ -703,7 +798,7 @@
                         <span class="tech-badge">Security</span>
                         <span class="tech-badge">PostgreSQL</span>
                     </div>
-                    <div class="project-hover-text">View Project Details →</div>
+                    <div class="project-hover-text" onclick="openModal('modal-healthcare')">View Project Details →</div>
                 </div>
             </div>
         </div>
@@ -748,6 +843,157 @@
         <div class="flex gap-4">
             <button onclick="acceptCookies()">Accept</button>
             <button class="decline" onclick="declineCookies()">Decline</button>
+        </div>
+    </div>
+
+    <!-- Project Modals -->
+    <div id="modal-business-analytics" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('modal-business-analytics')">&times;</button>
+            <div class="project-category">Web Development</div>
+            <h3>Business Analytics Dashboard</h3>
+            <p>The Business Analytics Dashboard is a robust, enterprise-grade data visualization platform designed to deliver real-time insights and performance analytics. Tailored for large-scale businesses, this solution enables stakeholders to monitor key performance indicators (KPIs), track operational metrics, and make data-driven decisions with ease. The platform features interactive charts, customizable dashboards, and seamless integration with existing enterprise systems, ensuring scalability and user-friendly navigation.</p>
+            <div class="tech-badges">
+                <span class="tech-badge">React</span>
+                <span class="tech-badge">TypeScript</span>
+                <span class="tech-badge">D3.js</span>
+                <span class="tech-badge">Node.js</span>
+            </div>
+            <div class="key-features">
+                <h4>Key Features</h4>
+                <ul>
+                    <li>Real-time data visualization with dynamic charts and graphs.</li>
+                    <li>Type-safe development with TypeScript for enhanced reliability.</li>
+                    <li>Scalable backend powered by Node.js for efficient data processing.</li>
+                    <li>Advanced data manipulation and visualization with D3.js.</li>
+                </ul>
+            </div>
+            <p><strong>Impact:</strong> Empowers enterprise clients to optimize decision-making processes by providing actionable insights through a visually intuitive interface.</p>
+        </div>
+    </div>
+
+    <div id="modal-ecommerce" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('modal-ecommerce')">&times;</button>
+            <div class="project-category">Web Development</div>
+            <h3>E-Commerce Platform</h3>
+            <p>This E-Commerce Platform is a scalable, responsive, and user-centric online store designed to deliver seamless shopping experiences across devices. Built with modern web technologies, it integrates advanced payment gateways for secure transactions and supports high traffic volumes. The platform is optimized for performance, accessibility, and user engagement, making it ideal for businesses looking to expand their digital retail presence.</p>
+            <div class="tech-badges">
+                <span class="tech-badge">React</span>
+                <span class="tech-badge">Node.js</span>
+                <span class="tech-badge">PostgreSQL</span>
+                <span class="tech-badge">Stripe</span>
+            </div>
+            <div class="key-features">
+                <h4>Key Features</h4>
+                <ul>
+                    <li>Responsive design for seamless browsing on desktop and mobile.</li>
+                    <li>Secure payment processing with Stripe integration.</li>
+                    <li>Robust database management with PostgreSQL for inventory and user data.</li>
+                    <li>Fast, component-based frontend with React for dynamic user interactions.</li>
+                </ul>
+            </div>
+            <p><strong>Impact:</strong> Drives business growth by providing a reliable, user-friendly e-commerce solution that enhances customer satisfaction and streamlines operations.</p>
+        </div>
+    </div>
+
+    <div id="modal-marketing-automation" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('modal-marketing-automation')">&times;</button>
+            <div class="project-category">Automation</div>
+            <h3>Marketing Automation Suite</h3>
+            <p>The Marketing Automation Suite is a comprehensive set of AI-powered tools designed to streamline social media and email marketing campaigns. It automates content scheduling, audience segmentation, and performance tracking, enabling businesses to optimize their marketing efforts efficiently. With built-in analytics, the suite provides actionable insights to improve campaign effectiveness and engagement.</p>
+            <div class="tech-badges">
+                <span class="tech-badge">Python</span>
+                <span class="tech-badge">React</span>
+                <span class="tech-badge">APIs</span>
+                <span class="tech-badge">PostgreSQL</span>
+            </div>
+            <div class="key-features">
+                <h4>Key Features</h4>
+                <ul>
+                    <li>AI-driven automation for scheduling and content delivery.</li>
+                    <li>Integration with third-party platforms via APIs for seamless workflows.</li>
+                    <li>Real-time campaign analytics powered by Python and PostgreSQL.</li>
+                    <li>Interactive frontend built with React for easy campaign management.</li>
+                </ul>
+            </div>
+            <p><strong>Impact:</strong> Saves time and resources while boosting marketing ROI through intelligent automation and data-driven strategies.</p>
+        </div>
+    </div>
+
+    <div id="modal-mobile-banking" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('modal-mobile-banking')">&times;</button>
+            <div class="project-category">Mobile Development</div>
+            <h3>Mobile Banking App</h3>
+            <p>The Mobile Banking App is a secure and intuitive solution that revolutionizes digital banking for users. Featuring biometric authentication, it ensures top-tier security while providing a seamless user experience for managing finances on the go. The app supports account management, transactions, and financial insights, all within a user-friendly mobile interface.</p>
+            <div class="tech-badges">
+                <span class="tech-badge">React Native</span>
+                <span class="tech-badge">Node.js</span>
+                <span class="tech-badge">Security</span>
+                <span class="tech-badge">APIs</span>
+            </div>
+            <div class="key-features">
+                <h4>Key Features</h4>
+                <ul>
+                    <li>Cross-platform mobile app built with React Native for iOS and Android.</li>
+                    <li>Robust security measures, including biometric authentication.</li>
+                    <li>Seamless integration with banking systems via APIs.</li>
+                    <li>Scalable backend with Node.js for reliable transaction processing.</li>
+                </ul>
+            </div>
+            <p><strong>Impact:</strong> Enhances user trust and engagement by delivering a secure, convenient, and feature-rich mobile banking experience.</p>
+        </div>
+    </div>
+
+    <div id="modal-supply-chain" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('modal-supply-chain')">&times;</button>
+            <div class="project-category">AI Solutions</div>
+            <h3>Supply Chain Optimizer</h3>
+            <p>The Supply Chain Optimizer is an AI-powered logistics solution that reduces operational costs by up to 30%. By leveraging machine learning algorithms, it optimizes supply chain processes, including inventory management, demand forecasting, and route planning. This system integrates with existing logistics frameworks to provide real-time insights and improve efficiency across the supply chain.</p>
+            <div class="tech-badges">
+                <span class="tech-badge">Python</span>
+                <span class="tech-badge">Machine Learning</span>
+                <span class="tech-badge">APIs</span>
+                <span class="tech-badge">PostgreSQL</span>
+            </div>
+            <div class="key-features">
+                <h4>Key Features</h4>
+                <ul>
+                    <li>Predictive analytics for demand forecasting using machine learning.</li>
+                    <li>Real-time optimization of logistics and inventory with Python.</li>
+                    <li>Integration with external systems via APIs for seamless data flow.</li>
+                    <li>Scalable data storage with PostgreSQL for large datasets.</li>
+                </ul>
+            </div>
+            <p><strong>Impact:</strong> Significantly reduces costs and improves operational efficiency, enabling businesses to streamline their supply chain processes.</p>
+        </div>
+    </div>
+
+    <div id="modal-healthcare" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('modal-healthcare')">&times;</button>
+            <div class="project-category">Web Development</div>
+            <h3>Healthcare Management System</h3>
+            <p>The Healthcare Management System is a comprehensive platform designed to streamline patient care and administrative processes. With integrated telemedicine capabilities, it enables secure virtual consultations, patient record management, and appointment scheduling. The system prioritizes data security and compliance, making it an ideal solution for healthcare providers seeking to modernize their operations.</p>
+            <div class="tech-badges">
+                <span class="tech-badge">React</span>
+                <span class="tech-badge">Node.js</span>
+                <span class="tech-badge">Security</span>
+                <span class="tech-badge">PostgreSQL</span>
+            </div>
+            <div class="key-features">
+                <h4>Key Features</h4>
+                <ul>
+                    <li>Secure telemedicine functionality for remote consultations.</li>
+                    <li>Robust patient data management with PostgreSQL and advanced security protocols.</li>
+                    <li>Dynamic, user-friendly interface built with React.</li>
+                    <li>Scalable backend with Node.js for handling complex healthcare workflows.</li>
+                </ul>
+            </div>
+            <p><strong>Impact:</strong> Improves patient care and operational efficiency by providing a secure, integrated platform for healthcare management.</p>
         </div>
     </div>
 
@@ -835,6 +1081,26 @@
             if (!getCookie('cookies_accepted')) {
                 document.getElementById('cookie-consent').style.display = 'flex';
             }
+        });
+
+        // Modal Functionality
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Close modal when clicking outside
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal(modal.id);
+                }
+            });
         });
     </script>
 </body>
