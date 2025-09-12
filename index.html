@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zannex Innovations - Innovating the Future, Today</title>
     <meta name="description" content="Zannex Innovations empowers businesses with AI-driven solutions, sleek digital platforms, and transformative technology. Expert AI solutions, web development, and tech consulting.">
+    <meta name="keywords" content="AI solutions, web development, tech consulting, Zannex Innovations, artificial intelligence, machine learning, digital transformation, innovative technology">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Zannex Innovations">
+    <meta property="og:title" content="Zannex Innovations - Innovating the Future, Today">
+    <meta property="og:description" content="Zannex Innovations empowers businesses with AI-driven solutions, sleek digital platforms, and transformative technology. Expert AI solutions, web development, and tech consulting.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.zannexinnovations.com/">
+    <meta property="og:image" content="https://www.zannexinnovations.com/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Zannex Innovations - Innovating the Future, Today">
+    <meta name="twitter:description" content="Zannex Innovations empowers businesses with AI-driven solutions, sleek digital platforms, and transformative technology. Expert AI solutions, web development, and tech consulting.">
+    <meta name="twitter:image" content="https://www.zannexinnovations.com/og-image.jpg">
+    <link rel="canonical" href="https://www.zannexinnovations.com/">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -427,7 +440,79 @@
         .gap-4 { gap: 16px; }
         .mb-8 { margin-bottom: 32px; }
         .mt-8 { margin-top: 32px; }
+
+        /* Cookies Popup Styles */
+        #cookie-consent {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #0a0a0a;
+            color: #f5f5f5;
+            padding: 16px 24px;
+            border-radius: 8px;
+            border: 1px solid #222222;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            max-width: 600px;
+            width: 90%;
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        #cookie-consent p {
+            margin: 0;
+            font-size: 0.875rem;
+            color: #888888;
+        }
+
+        #cookie-consent button {
+            background-color: #3b82f6;
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+
+        #cookie-consent button:hover {
+            background-color: #2563eb;
+        }
+
+        #cookie-consent .decline {
+            background-color: transparent;
+            border: 1px solid #888888;
+            color: #888888;
+        }
+
+        #cookie-consent .decline:hover {
+            background-color: #222222;
+        }
     </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Zannex Innovations",
+      "url": "https://www.zannexinnovations.com/",
+      "logo": "https://www.zannexinnovations.com/logo.png",
+      "description": "Zannex Innovations empowers businesses with AI-driven solutions, sleek digital platforms, and transformative technology.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "",
+        "contactType": "customer service",
+        "email": "contact@zannexinnovations.com"
+      },
+      "sameAs": [
+        "https://instagram.com/zannexinnovations",
+        "https://x.com/zannexofficial"
+      ]
+    }
+    </script>
 </head>
 <body>
     <!-- Navigation -->
@@ -657,6 +742,15 @@
         </div>
     </footer>
 
+    <!-- Cookies Consent Popup -->
+    <div id="cookie-consent" class="flex items-center justify-center">
+        <p>We use cookies to improve your experience on our site. By continuing, you agree to our use of cookies.</p>
+        <div class="flex gap-4">
+            <button onclick="acceptCookies()">Accept</button>
+            <button class="decline" onclick="declineCookies()">Decline</button>
+        </div>
+    </div>
+
     <script>
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -707,6 +801,40 @@
             requestAnimationFrame(() => {
                 document.body.style.opacity = '1';
             });
+        });
+
+        // Cookies Consent Functionality
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+
+        function setCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+
+        function acceptCookies() {
+            setCookie('cookies_accepted', 'true', 365);
+            document.getElementById('cookie-consent').style.display = 'none';
+            // Here you can add code to load analytics or other cookies-dependent scripts
+        }
+
+        function declineCookies() {
+            setCookie('cookies_accepted', 'false', 365);
+            document.getElementById('cookie-consent').style.display = 'none';
+        }
+
+        window.addEventListener('load', () => {
+            if (!getCookie('cookies_accepted')) {
+                document.getElementById('cookie-consent').style.display = 'flex';
+            }
         });
     </script>
 </body>
